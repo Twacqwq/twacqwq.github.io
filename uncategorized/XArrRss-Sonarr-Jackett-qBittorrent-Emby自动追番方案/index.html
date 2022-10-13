@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html>
+  <head>
+     
+    <meta charset="UTF-8">
+    <title>Sonarr+Jackett+qBittorrent+Emby自动追番方案 - Twacの自习室</title>
+    <link rel="shortcut icon" href="/static/img/%E5%9B%A2%E5%AD%90.png">
+    <link rel="icon" href="/static/img/团子.jpg" sizes="192x192"/>
+    
+<link rel="stylesheet" href="/static/kico.css">
+<link rel="stylesheet" href="/static/hingle.css">
+
+    
+<link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/4.7.0/css/font-awesome.css">
+
+    <meta name="viewport" content="width=device-width, maximum-scale=1, initial-scale=1"/>
+    <meta property="og:site_name" content="Twacの自习室">
+    <meta property="og:title" content="Sonarr+Jackett+qBittorrent+Emby自动追番方案"/>
+    
+    <style>body:before{ content: ''; background-image: url(https://api.paugram.com/wallpaper?source=gh) }</style>
+    
+<meta name="generator" content="Hexo 6.1.0"><link rel="alternate" href="/atom.xml" title="Twacの自习室" type="application/atom+xml">
+</head>
+
+  <body>
+    <header>
+    <div class="head-title">
+        <h4>Twacの自习室</h4>
+    </div>
+    <div class="head-action">
+        <div class="toggle-btn"></div>
+        <div class="light-btn"></div>
+        <div class="search-btn"></div>
+    </div>
+    <form class="head-search" method="post">
+        <input type="text" name="s" placeholder="搜索什么？">
+    </form>
+    <nav class="head-menu">
+        <a href="/">首页</a>
+        <div class="has-child">
+            <a>分类</a>
+            <div class="sub-menu">
+                <a class="category-link" href="/backenddev/">后端学习</a><a class="category-link" href="/randomtoss/">瞎折腾</a><a class="category-link" href="/lanqiao/">蓝桥杯</a>
+            </div>
+        </div>
+        
+            <a href="/about">关于我</a>
+        
+            <a href="/friends">朋友们</a>
+        
+            <a href="/atom.xml">RSS订阅</a>
+        
+    </nav>
+</header>
+
+    <main>
+    <div class="wrap min">
+        <section class="post-title">
+            <h2>Sonarr+Jackett+qBittorrent+Emby自动追番方案</h2>
+            <div class="post-meta">
+                <time class="date">2022.07.23</time>
+            
+            </div>
+        </section>
+        <article class="post-content">
+        
+            <p>众所周知B站看番环境越来越苛刻了(港澳除外)，国内上线的番剧少之又少且部分番剧还有圣光剪辑和无缝链接，实属破坏看番体验。B站以外的在线看番网站画质起伏特别大，还有很多广告。所以搭建一个属于自己的影视库不仅可以满足看番需求，还可以满足BT党做种收藏需求(BT&#x2F;P2P也可以XD)</p>
+<h1 id="Emby-Server部署"><a href="#Emby-Server部署" class="headerlink" title="Emby Server部署"></a>Emby Server部署</h1><p>有了想法开始搭建，影视库服务器我选用<a target="_blank" rel="noopener" href="https://emby.media/">Emby</a>，虽然<a target="_blank" rel="noopener" href="https://jellyfin.org/">Jellyfin</a>开源，还是用Emby舒服一些(看个人)</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">docker run -d \</span><br><span class="line">    --net=host \</span><br><span class="line">    -v /*your_config_location*:/config \</span><br><span class="line">    -e TZ=Asia/Shanghai \</span><br><span class="line">    -e HTTP_PROXY=xxx \</span><br><span class="line">    -e HTTPS_RPOXY=xxx \</span><br><span class="line">    -e PUID=1000 \</span><br><span class="line">    -e GUID=1000 \</span><br><span class="line">    --name=emby-server \</span><br><span class="line">    emby/embyserver:latest</span><br></pre></td></tr></table></figure>
+<p>Emby会连上<a target="_blank" rel="noopener" href="https://www.themoviedb.org/">TVDB</a>刮削剧集信息，Emby有时候会连不上，最好部署的时候加一个代理</p>
+<p><img src="/../img/sonarr/embyIndex.png" alt="EmbyIndex"></p>
+<p>部署好Emby后我们只需要导入我们喜欢的番剧刮削便可食用了…但这还不够，Emby对于刮削有这严格的命名规范，不符合规范的是不会有封面以及影视信息出现，我们可以选择手动刮削神器<a target="_blank" rel="noopener" href="https://www.tinymediamanager.org/">tMM</a>刮削，刮好后导入Emby即可，这种方式准确且无误，但是缺点是每次都要手动导入很麻烦，达不到预期自动化的需求，所以要用Sonarr代替tMM解决手动命名的问题。</p>
+<p>导入前先创建影视库</p>
+<p><img src="/../img/sonarr/newDB.png" alt="newDB"></p>
+<p>文件夹选择你想要存放的影视库位置</p>
+<h1 id="Sonarr部署"><a href="#Sonarr部署" class="headerlink" title="Sonarr部署"></a>Sonarr部署</h1><p><a target="_blank" rel="noopener" href="https://sonarr.tv/">Sonarr</a>是一个对接TVDB管理番剧&#x2F;TV剧集信息的容器，它可以监控各大种子站的RSS和磁力链接并且转由下载端(qBittorrent)下载并返回给Sonarr，Sonarr会根据TVDB的命名规范对剧集命名，最后Emby检测到正确的命名自动刮削成中文信息，实在是美滋滋，省去了自己手动刮削以及创建文件夹的过程，最重要的是Sonarr是以<code>硬链接</code>的方式创建剧集，意味着可以一边做种一边刮削(BT党狂喜捏)</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">docker run -d \</span><br><span class="line">    -e PUID=1000 \</span><br><span class="line">    -e PGID=1000 \</span><br><span class="line">    -e TZ=Asia/Shanghai \</span><br><span class="line">    -p 8989:8989 \</span><br><span class="line">    -v /path/data:/config \</span><br><span class="line">    -v /data/volName:/volName \</span><br><span class="line">    --name=sonarr \</span><br><span class="line">    --restart unless-stopped \</span><br><span class="line">    linuxserver/sonarr:latest</span><br></pre></td></tr></table></figure>
+
+<p>部署好运行如下:</p>
+<p><img src="/../img/sonarr/sonarrIndex.png" alt="sonarrIndex"></p>
+<p>先对Sonarr进行一些必要的设置</p>
+<h4 id="Media-Management"><a href="#Media-Management" class="headerlink" title="Media Management"></a>Media Management</h4><p>在此页面开启命名正则表达式，以及在下方的<code>Root Floders</code>映射在Emby下创建的影视库路径</p>
+<p><img src="/../img/sonarr/media.png" alt="media"></p>
+<h4 id="Download-Clients"><a href="#Download-Clients" class="headerlink" title="Download Clients"></a>Download Clients</h4><p>配置一下Sonarr的下载端，这里选用qB，同样docker部署，具体过程不展示了</p>
+<p><img src="/../img/sonarr/qb.png" alt="qB"></p>
+<p>如图所示配置qB的地址以及用户名密码即可对接</p>
+<h4 id="Indexers"><a href="#Indexers" class="headerlink" title="Indexers"></a>Indexers</h4><p>此项是Sonarr最重要的一个配置：为Sonarr添加索引的种子站API。借助API索引指定番剧并解析磁力配合qB使用下载，这里要借助一个索引聚合器<code>Jackett</code></p>
+<h1 id="Jackett部署"><a href="#Jackett部署" class="headerlink" title="Jackett部署"></a>Jackett部署</h1><p><a target="_blank" rel="noopener" href="https://github.com/Jackett/Jackett">Jackett</a>是一个种子索引聚合器，集成各大种子站API，配合Sonarr自动搜索也是一个美滋滋的容器捏，可以转换为RSS以及Torznab(Sonarr支持)的格式，后者可以支持主动搜索。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">docker run -d \</span><br><span class="line">    -e PUID=1000 \</span><br><span class="line">    -e PGID=1000 \</span><br><span class="line">    -e TZ=Asia/Shanghai \</span><br><span class="line">    -p 9117:9117 \</span><br><span class="line">    -v /path/data:/config \</span><br><span class="line">    --name=jackett \</span><br><span class="line">    --restart unless-stopped \</span><br><span class="line">    linuxserver/jackett</span><br></pre></td></tr></table></figure>
+
+<p>部署后运行：</p>
+<p><img src="/../img/sonarr/jackettIndex.png" alt="jackett"></p>
+<p>点击<code>Add Indexer</code>即可添加种子站，如图所示这是我添加的几个种子站，平时看番的话这几个足矣。现在可以将API对接到Sonarr里了，点击<code>Copy Torznab Feed</code>复制Torznab格式(Sonarr支持)到Sonarr</p>
+<p><img src="/../img/sonarr/indexs.png" alt="indexs"></p>
+<p>API Key填写Jackett右上方的Key,选好分类保存即可。</p>
+<h1 id="XArrRss配合Sonarr"><a href="#XArrRss配合Sonarr" class="headerlink" title="XArrRss配合Sonarr"></a>XArrRss配合Sonarr</h1><p>到了这步其实已经实现了全自动追番了，只要在Sonarr添加你想追的番剧，Sonarr会从Indexer添加的种子API中检索番剧磁力链交由qB下载，下载好后Sonarr自动命名硬链接到Emby，Emby检测规范命名自动刮削。</p>
+<p><img src="/../img/sonarr/zhui.png" alt="zhui"></p>
+<p>但..Sonarr在TV&#x2F;电视剧表现是优异的，在追番检索上有点不尽人意，大部分是可以完美检索匹配，小部分还是因为命名问题无法匹配到相应的番剧磁力链，在此基础上还需要一个辅助容器帮助Sonarr精准的自动检索匹配到番剧磁力，这时<a target="_blank" rel="noopener" href="https://xarr.52nyg.com/">XArr-Rss</a>就派上用场了。</p>
+<p>XArrRss其实就是解决了Sonarr无法检索到规范命名的问题[可选项]</p>
+<p><img src="/../img/sonarr/XArr.png" alt="XArr"></p>
+<p>最后生成相应的RSS和Torznab到Sonarr就可以了。</p>
+<h1 id="效果展示"><a href="#效果展示" class="headerlink" title="效果展示"></a>效果展示</h1><p><img src="/../img/sonarr/emby.jpg" alt="emby"></p>
+<p><img src="/../img/sonarr/gua.png" alt="gua"></p>
+<h1 id="数据源推荐"><a href="#数据源推荐" class="headerlink" title="数据源推荐"></a>数据源推荐</h1><table>
+<thead>
+<tr>
+<th>名称</th>
+<th>网址</th>
+<th>代理</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>蜜柑计划</td>
+<td><a target="_blank" rel="noopener" href="https://mikanani.me/">https://mikanani.me/</a></td>
+<td>-</td>
+<td>强推，配合XArr完美</td>
+</tr>
+<tr>
+<td>动漫花园</td>
+<td><a target="_blank" rel="noopener" href="https://www.dmhy.org/">https://www.dmhy.org/</a></td>
+<td>需要代理</td>
+<td>-</td>
+</tr>
+<tr>
+<td>萌番组</td>
+<td><a target="_blank" rel="noopener" href="https://bangumi.moe/">https://bangumi.moe</a></td>
+<td>-</td>
+<td>对Sonarr很友好</td>
+</tr>
+<tr>
+<td>Nyaa</td>
+<td><a target="_blank" rel="noopener" href="https://nyaa.si/">https://nyaa.si/</a></td>
+<td>需要代理</td>
+<td>-</td>
+</tr>
+<tr>
+<td>漫猫动漫</td>
+<td><a target="_blank" rel="noopener" href="http://www.comicat.org/">http://www.comicat.org/</a></td>
+<td>需要代理</td>
+<td>-</td>
+</tr>
+</tbody></table>
+
+        </article>
+        <section class="post-near">
+            <ul>
+                
+                    <li>上一篇: 看完啦 (つд⊂)</li>
+                
+                
+                    <li>下一篇: <a href="/randomtoss/%E7%BB%99KVM%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%8A%A0%E5%8F%8C%E7%BF%85%E8%86%80/">给KVM虚拟机加双翅膀-直通独立显卡</a></li>
+                
+            </ul>
+        </section>
+        
+            <section class="post-tags">
+            <a class="-none-link" href="/tags/%E7%9E%8E%E6%8A%98%E8%85%BE/" rel="tag">瞎折腾</a>
+            </section>
+        
+    
+        <section class="post-author">
+        
+            <figure class="author-avatar">
+                <img src="/img/团子.jpg" alt="Twac" />
+            </figure>
+        
+            <div class="author-info">
+                <h4>Twac</h4>
+                <p>CL厨丨编程爱好者丨日语N2萌新 | 前后端都会一点点的菜鸟。</p>
+            </div>
+        </section>
+    
+    </div>
+</main>
+
+    <footer>
+    <div class="buttons">
+        <a class="to-top" href="#"></a>
+    </div>
+    <div class="wrap min">
+        <section class="widget">
+            <div class="row">
+                <div class="col-m-4">
+                    <h3 class="title-recent">最新文章：</h3>
+                    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/uncategorized/XArrRss-Sonarr-Jackett-qBittorrent-Emby%E8%87%AA%E5%8A%A8%E8%BF%BD%E7%95%AA%E6%96%B9%E6%A1%88/">Sonarr+Jackett+qBittorrent+Emby自动追番方案</a></li><li class="post-list-item"><a class="post-list-link" href="/randomtoss/%E7%BB%99KVM%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%8A%A0%E5%8F%8C%E7%BF%85%E8%86%80/">给KVM虚拟机加双翅膀-直通独立显卡</a></li><li class="post-list-item"><a class="post-list-link" href="/lanqiao/%E7%AC%AC%E5%8D%81%E4%B8%89%E5%B1%8A%E8%93%9D%E6%A1%A5%E6%9D%AF%E5%A4%8D%E7%9B%98/">第十三届蓝桥杯复盘</a></li><li class="post-list-item"><a class="post-list-link" href="/backenddev/Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/">Linux常用命令</a></li><li class="post-list-item"><a class="post-list-link" href="/uncategorized/%E6%97%A5%E8%AF%AD%E6%A0%B8%E5%BF%83%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95%E6%A1%86%E6%9E%B6%E5%B0%8F%E8%AE%B0/">日语核心基础语法框架小记</a></li><li class="post-list-item"><a class="post-list-link" href="/lanqiao/%E7%AC%AC%E5%8D%81%E4%B8%80%E5%B1%8A%E8%93%9D%E6%A1%A5%E6%9D%AFJavaB%E7%BB%84%E7%9C%81%E8%B5%9B/">[刷题记录]第十一届蓝桥杯JavaB组省赛</a></li></ul>
+                </div>
+                <div class="col-m-4">
+                    <h3 class="title-date">时光机：</h3>
+                    <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/07/">July 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/06/">June 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/06/">June 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">March 2021</a></li></ul>
+                </div>
+                <div class="col-m-4">
+                    <h3 class="title-tags">标签云：</h3>
+                    <a href="/tags/KVM/" style="font-size: 10px;">KVM</a> <a href="/tags/Linux/" style="font-size: 20px;">Linux</a> <a href="/tags/%E6%97%A5%E8%AF%AD%E5%AD%A6%E4%B9%A0/" style="font-size: 10px;">日语学习</a> <a href="/tags/%E7%9E%8E%E6%8A%98%E8%85%BE/" style="font-size: 10px;">瞎折腾</a> <a href="/tags/algorithm/" style="font-size: 20px;">算法</a>
+                </div>
+            </div>
+        </section>
+        <section class="sub-footer">
+            <p>© 2022 <a href="/">Twacの自习室</a>. All Rights Reserved. Theme By <a href="https://github.com/Dreamer-Paul/Hingle" target="_blank" rel="nofollow">Hingle</a>.</p>
+        </section>
+    </div>
+</footer>
+
+
+<script src="/static/kico.js"></script>
+<script src="/static/hingle.js"></script>
+
+
+<script>var hingle = new Paul_Hingle({"copyright":false,"night":false});</script>
+
+  </body>
+</html>

@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html>
+  <head>
+     
+    <meta charset="UTF-8">
+    <title>[刷题记录]第十一届蓝桥杯JavaB组省赛 - Twacの自习室</title>
+    <link rel="shortcut icon" href="/static/img/%E5%9B%A2%E5%AD%90.png">
+    <link rel="icon" href="/static/img/团子.jpg" sizes="192x192"/>
+    
+<link rel="stylesheet" href="/static/kico.css">
+<link rel="stylesheet" href="/static/hingle.css">
+
+    
+<link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/4.7.0/css/font-awesome.css">
+
+    <meta name="viewport" content="width=device-width, maximum-scale=1, initial-scale=1"/>
+    <meta property="og:site_name" content="Twacの自习室">
+    <meta property="og:title" content="[刷题记录]第十一届蓝桥杯JavaB组省赛"/>
+    
+    <style>body:before{ content: ''; background-image: url(https://api.paugram.com/wallpaper?source=gh) }</style>
+    
+<meta name="generator" content="Hexo 6.1.0"><link rel="alternate" href="/atom.xml" title="Twacの自习室" type="application/atom+xml">
+</head>
+
+  <body>
+    <header>
+    <div class="head-title">
+        <h4>Twacの自习室</h4>
+    </div>
+    <div class="head-action">
+        <div class="toggle-btn"></div>
+        <div class="light-btn"></div>
+        <div class="search-btn"></div>
+    </div>
+    <form class="head-search" method="post">
+        <input type="text" name="s" placeholder="搜索什么？">
+    </form>
+    <nav class="head-menu">
+        <a href="/">首页</a>
+        <div class="has-child">
+            <a>分类</a>
+            <div class="sub-menu">
+                <a class="category-link" href="/backenddev/">后端学习</a><a class="category-link" href="/randomtoss/">瞎折腾</a><a class="category-link" href="/lanqiao/">蓝桥杯</a>
+            </div>
+        </div>
+        
+            <a href="/about">关于我</a>
+        
+            <a href="/friends">朋友们</a>
+        
+            <a href="/atom.xml">RSS订阅</a>
+        
+    </nav>
+</header>
+
+    <main>
+    <div class="wrap min">
+        <section class="post-title">
+            <h2>[刷题记录]第十一届蓝桥杯JavaB组省赛</h2>
+            <div class="post-meta">
+                <time class="date">2021.03.31</time>
+            
+                <span class="category"><a class="category-link" href="/lanqiao/">蓝桥杯</a></span>
+            
+            </div>
+        </section>
+        <article class="post-content">
+        
+            <blockquote>这篇文章上次修改于 561 天前，可能其部分内容已经发生变化，如有疑问可询问作者。</blockquote>
+        
+            <blockquote>
+<p>把会做的做了一遍，不会做的就不放题目了</p>
+</blockquote>
+<h2 id="试题A-–-门牌制作"><a href="#试题A-–-门牌制作" class="headerlink" title="试题A – 门牌制作"></a>试题A – 门牌制作</h2><p>问题描述:</p>
+<p>小蓝要为一条街的住户制作门牌号。<br>这条街一共有 2020 位住户，门牌号从 1 到 2020 编号。<br>小蓝制作门牌的方法是先制作 0 到 9 这几个数字字符，最后根据需要将字<br>符粘贴到门牌上，例如门牌 1017 需要依次粘贴字符 1、0、1、7，即需要 1 个<br>字符 0，2 个字符 1，1 个字符 7。<br>请问要制作所有的 1 到 2020 号门牌，总共需要多少个字符 2？</p>
+<p>输出: 624</p>
+<p>思路：模除筛选，把符合条件的数位用计数器存起来即可。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="type">int</span> <span class="variable">count</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">1</span>; i &lt;= <span class="number">2020</span>; i++) &#123;</span><br><span class="line">            <span class="type">int</span> <span class="variable">tmp</span> <span class="operator">=</span> i;</span><br><span class="line">            <span class="keyword">while</span> (tmp &gt; <span class="number">0</span>) &#123;</span><br><span class="line">                <span class="keyword">if</span> (tmp%<span class="number">10</span> == <span class="number">2</span>) &#123;</span><br><span class="line">                    count++;</span><br><span class="line">                &#125;</span><br><span class="line">                tmp /= <span class="number">10</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(count);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="试题C-–-蛇形填数"><a href="#试题C-–-蛇形填数" class="headerlink" title="试题C – 蛇形填数"></a>试题C – 蛇形填数</h2><p>题目描述：</p>
+<p>小明用从 1 开始的正整数“蛇形”填充无限大的矩阵。 1 2 6 7 15 …</p>
+<p>3 5 8 14 …</p>
+<p>4 9 13 …</p>
+<p>10 12 …</p>
+<p>11 … …</p>
+<p>容易看出矩阵第二行第二列中的数是 5。请你计算矩阵中第 20 行第 20 列 的数是多少？</p>
+<p>输出：761</p>
+<p>思路：</p>
+<p>嘤嘤嘤这道题看着数字不是很大暴力就出来了，看大佬的思路直接找规律了。</p>
+<p>第n行第n列 &#x3D; n^2 + (n-1)^2 （tqlllllllllllllll</p>
+<h2 id="试题E-–-排序"><a href="#试题E-–-排序" class="headerlink" title="试题E – 排序"></a>试题E – 排序</h2><p>题目描述：</p>
+<p>小蓝最近学习了一些排序算法，其中冒泡排序让他印象深刻。<br>在冒泡排序中，每次只能交换相邻的两个元素。<br>小蓝发现，如果对一个字符串中的字符排序，只允许交换相邻的两个字符，<br>则在所有可能的排序方案中，冒泡排序的总交换次数是最少的。<br>例如，对于字符串 lan 排序，只需要 1 次交换。对于字符串 qiao 排序，<br>总共需要 4 次交换。<br>小蓝找到了很多字符串试图排序，他恰巧碰到一个字符串，需要 100 次交<br>换，可是他忘了吧这个字符串记下来，现在找不到了。<br>请帮助小蓝找一个只包含小写英文字母且没有字母重复出现的字符串，对<br>该串的字符排序，正好需要 100 次交换。如果可能找到多个，请告诉小蓝最短<br>的那个。如果最短的仍然有多个，请告诉小蓝字典序最小的那个。请注意字符<br>串中可以包含相同的字符。</p>
+<p>思路：</p>
+<p>主要考的是冒泡排序的特点，最大排序次数应该是n*(n-1)&#x2F;2次，题目要求求得移动次数最大为100，则n只能等于15，那代入公式就是需要排序105次，按照字典序的定义拿出前十五位字母abcdefghijklklmno; 如果把它反转的话，那么就是onmlkjighfedecba，冒泡排序一定需要排序105次，根据题目要求需要的是100次，那么我们只需要将第六位提到最前面就能省去五次排序，即符合题目要求100次交换。</p>
+<p>输出：<code>jonmlkihgfedcba</code></p>
+<h2 id="试题F-–-成绩分析"><a href="#试题F-–-成绩分析" class="headerlink" title="试题F – 成绩分析"></a>试题F – 成绩分析</h2><p>题目描述：</p>
+<p>小蓝给学生们组织了一场考试，卷面总分为 100 分，每个学生的得分都是 一个 0 到 100 的整数。 请计算这次考试的最高分、最低分和平均分。</p>
+<p>样例输入：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">7</span><br><span class="line">80</span><br><span class="line">92</span><br><span class="line">56</span><br><span class="line">74</span><br><span class="line">88</span><br><span class="line">99</span><br><span class="line">10</span><br></pre></td></tr></table></figure>
+
+<p>样例输出：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">99</span><br><span class="line">10</span><br><span class="line">71.29</span><br></pre></td></tr></table></figure>
+
+<p>思路：经典数学问题正常写就好了</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.Scanner;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="type">Scanner</span> <span class="variable">sc</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Scanner</span>(System.in);</span><br><span class="line">        <span class="type">int</span> <span class="variable">n</span> <span class="operator">=</span> sc.nextInt();</span><br><span class="line">        <span class="type">int</span> <span class="variable">maxScore</span> <span class="operator">=</span> <span class="number">0</span>,minScore = <span class="number">100</span>;</span><br><span class="line">        <span class="type">double</span> <span class="variable">total</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">            <span class="type">int</span> <span class="variable">tmp</span> <span class="operator">=</span> sc.nextInt();</span><br><span class="line">            <span class="keyword">if</span> (tmp &gt; maxScore) maxScore = tmp;</span><br><span class="line">            <span class="keyword">if</span> (tmp &lt; minScore) minScore = tmp;</span><br><span class="line">            total += tmp;</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(maxScore);</span><br><span class="line">        System.out.println(minScore);</span><br><span class="line">        System.out.printf(<span class="string">&quot;%.2f&quot;</span>,total/n);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="试题G-–-单词分析"><a href="#试题G-–-单词分析" class="headerlink" title="试题G – 单词分析"></a>试题G – 单词分析</h2><p>题目描述：</p>
+<p>小蓝正在学习一门神奇的语言，这门语言中的单词都是由小写英文字母组<br>成，有些单词很长，远远超过正常英文单词的长度。小蓝学了很长时间也记不<br>住一些单词，他准备不再完全记忆这些单词，而是根据单词中哪个字母出现得<br>最多来分辨单词。<br>现在，请你帮助小蓝，给了一个单词后，帮助他找到出现最多的字母和这<br>个字母出现的次数<br>PS ：</p>
+<p>输入一行包含一个单词，单词只由小写英文字母组成。</p>
+<p>输出两行，第一行包含一个英文字母，表示单词中出现得最多的字母是哪 个。如果有多个字母出现的次数相等，输出字典序最小的那个。 第二行包含一个整数，表示出现得最多的那个字母在单词中出现的次数。</p>
+<p>样例输入：<code>lanqiao</code></p>
+<p>样例输出：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">a</span><br><span class="line">2</span><br></pre></td></tr></table></figure>
+
+<p>思路：分割字符串存入HashMap中，记录次数，遍历后输出最大次数的键值对。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.HashMap;</span><br><span class="line"><span class="keyword">import</span> java.util.Map;</span><br><span class="line"><span class="keyword">import</span> java.util.Scanner;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="type">Scanner</span> <span class="variable">scanner</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Scanner</span>(System.in);</span><br><span class="line">        <span class="type">String</span> <span class="variable">str</span> <span class="operator">=</span> scanner.nextLine();</span><br><span class="line">        Map&lt;Character,Integer&gt; map = <span class="keyword">new</span> <span class="title class_">HashMap</span>&lt;&gt;();</span><br><span class="line">        <span class="type">char</span> tmp;</span><br><span class="line">        <span class="type">Integer</span> <span class="variable">val</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; str.length(); i++) &#123;</span><br><span class="line">            tmp = str.charAt(i);</span><br><span class="line">            val = map.get(tmp);</span><br><span class="line">            map.put(tmp,(val==<span class="literal">null</span>)?<span class="number">1</span>:++val);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="type">int</span> <span class="variable">max</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">        <span class="type">char</span> <span class="variable">keyword</span> <span class="operator">=</span> <span class="string">&#x27; &#x27;</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">char</span> key : map.keySet()) &#123;</span><br><span class="line">            <span class="type">Integer</span> <span class="variable">value</span> <span class="operator">=</span> map.get(key);</span><br><span class="line">            <span class="keyword">if</span> (value &gt; max) &#123;</span><br><span class="line">                max = value;</span><br><span class="line">                keyword = key;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(keyword);</span><br><span class="line">        System.out.println(max);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="试题I-–-子串分值和"><a href="#试题I-–-子串分值和" class="headerlink" title="试题I – 子串分值和"></a>试题I – 子串分值和</h2><p>题目描述：</p>
+<p>对于一个字符串 S，我们定义 S 的分值 f(S ) 为 S 中出现的不同的字符个<br>数。例如 f(”aba”) &#x3D; 2，f(”abc”) &#x3D; 3, f(”aaa”) &#x3D; 1。<br>现在给定一个字符串 S [0..n 1]（长度为 n），请你计算对于所有 S 的非空<br>子串 S [i.. j](0 ≤ i ≤ j &lt; n)，f(S [i.. j]) 的和是多少。</p>
+<p>样例输入：ababc</p>
+<p>样例输出：28</p>
+<p>思路：将字符串分割成全部子串存入List里，然后子串分割字符存入set去重，算出最后的分值和。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.*;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">StringScoreSum</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="type">Scanner</span> <span class="variable">scanner</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Scanner</span>(System.in);</span><br><span class="line">        <span class="type">String</span> <span class="variable">str</span> <span class="operator">=</span> scanner.nextLine();</span><br><span class="line">        List&lt;String&gt; list = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; str.length(); i++) &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">j</span> <span class="operator">=</span> i+<span class="number">1</span>; j &lt;= str.length(); j++) &#123;</span><br><span class="line">                list.add(str.substring(i,j));</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="type">int</span> <span class="variable">count</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">k</span> <span class="operator">=</span> <span class="number">0</span>; k &lt; list.size(); k++) &#123;</span><br><span class="line">            Set&lt;String&gt; set = <span class="keyword">new</span> <span class="title class_">HashSet</span>&lt;&gt;();</span><br><span class="line">            <span class="type">String</span> <span class="variable">tmp</span> <span class="operator">=</span> list.get(k);</span><br><span class="line">            <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">v</span> <span class="operator">=</span> <span class="number">0</span>; v &lt; tmp.length(); v++) &#123;</span><br><span class="line">                set.add(tmp.charAt(v)+<span class="string">&quot;&quot;</span>);</span><br><span class="line">            &#125;</span><br><span class="line">            count += set.size();</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(count);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="The-End"><a href="#The-End" class="headerlink" title="The End"></a>The End</h2><p>好多题8会鸭~~~~~~ 特别是最后一道题装饰珠直接送走我QAQ</p>
+
+        </article>
+        <section class="post-near">
+            <ul>
+                
+                    <li>上一篇: <a href="/uncategorized/%E6%97%A5%E8%AF%AD%E6%A0%B8%E5%BF%83%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95%E6%A1%86%E6%9E%B6%E5%B0%8F%E8%AE%B0/">日语核心基础语法框架小记</a></li>
+                
+                
+                    <li>下一篇: 看完啦 (つд⊂)</li>
+                
+            </ul>
+        </section>
+        
+            <section class="post-tags">
+            <a class="-none-link" href="/tags/algorithm/" rel="tag">算法</a>
+            </section>
+        
+    
+        <section class="post-author">
+        
+            <figure class="author-avatar">
+                <img src="/img/团子.jpg" alt="Twac" />
+            </figure>
+        
+            <div class="author-info">
+                <h4>Twac</h4>
+                <p>CL厨丨编程爱好者丨日语N2萌新 | 前后端都会一点点的菜鸟。</p>
+            </div>
+        </section>
+    
+    </div>
+</main>
+
+    <footer>
+    <div class="buttons">
+        <a class="to-top" href="#"></a>
+    </div>
+    <div class="wrap min">
+        <section class="widget">
+            <div class="row">
+                <div class="col-m-4">
+                    <h3 class="title-recent">最新文章：</h3>
+                    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/uncategorized/XArrRss-Sonarr-Jackett-qBittorrent-Emby%E8%87%AA%E5%8A%A8%E8%BF%BD%E7%95%AA%E6%96%B9%E6%A1%88/">Sonarr+Jackett+qBittorrent+Emby自动追番方案</a></li><li class="post-list-item"><a class="post-list-link" href="/randomtoss/%E7%BB%99KVM%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%8A%A0%E5%8F%8C%E7%BF%85%E8%86%80/">给KVM虚拟机加双翅膀-直通独立显卡</a></li><li class="post-list-item"><a class="post-list-link" href="/lanqiao/%E7%AC%AC%E5%8D%81%E4%B8%89%E5%B1%8A%E8%93%9D%E6%A1%A5%E6%9D%AF%E5%A4%8D%E7%9B%98/">第十三届蓝桥杯复盘</a></li><li class="post-list-item"><a class="post-list-link" href="/backenddev/Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/">Linux常用命令</a></li><li class="post-list-item"><a class="post-list-link" href="/uncategorized/%E6%97%A5%E8%AF%AD%E6%A0%B8%E5%BF%83%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95%E6%A1%86%E6%9E%B6%E5%B0%8F%E8%AE%B0/">日语核心基础语法框架小记</a></li><li class="post-list-item"><a class="post-list-link" href="/lanqiao/%E7%AC%AC%E5%8D%81%E4%B8%80%E5%B1%8A%E8%93%9D%E6%A1%A5%E6%9D%AFJavaB%E7%BB%84%E7%9C%81%E8%B5%9B/">[刷题记录]第十一届蓝桥杯JavaB组省赛</a></li></ul>
+                </div>
+                <div class="col-m-4">
+                    <h3 class="title-date">时光机：</h3>
+                    <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/07/">July 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/06/">June 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/06/">June 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">March 2021</a></li></ul>
+                </div>
+                <div class="col-m-4">
+                    <h3 class="title-tags">标签云：</h3>
+                    <a href="/tags/KVM/" style="font-size: 10px;">KVM</a> <a href="/tags/Linux/" style="font-size: 20px;">Linux</a> <a href="/tags/%E6%97%A5%E8%AF%AD%E5%AD%A6%E4%B9%A0/" style="font-size: 10px;">日语学习</a> <a href="/tags/%E7%9E%8E%E6%8A%98%E8%85%BE/" style="font-size: 10px;">瞎折腾</a> <a href="/tags/algorithm/" style="font-size: 20px;">算法</a>
+                </div>
+            </div>
+        </section>
+        <section class="sub-footer">
+            <p>© 2022 <a href="/">Twacの自习室</a>. All Rights Reserved. Theme By <a href="https://github.com/Dreamer-Paul/Hingle" target="_blank" rel="nofollow">Hingle</a>.</p>
+        </section>
+    </div>
+</footer>
+
+
+<script src="/static/kico.js"></script>
+<script src="/static/hingle.js"></script>
+
+
+<script>var hingle = new Paul_Hingle({"copyright":false,"night":false});</script>
+
+  </body>
+</html>
