@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+  <head>
+     
+    <meta charset="UTF-8">
+    <title>每日一刷 791、99、103、109、112、113 - Twacの自习室</title>
+    <link rel="shortcut icon" href="/static/img/%E5%9B%A2%E5%AD%90.png">
+    <link rel="icon" href="/static/img/团子.jpg" sizes="192x192"/>
+    
+<link rel="stylesheet" href="/static/kico.css">
+<link rel="stylesheet" href="/static/hingle.css">
+
+    
+<link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/4.7.0/css/font-awesome.css">
+
+    <meta name="viewport" content="width=device-width, maximum-scale=1, initial-scale=1"/>
+    <meta property="og:site_name" content="Twacの自习室">
+    <meta property="og:title" content="每日一刷 791、99、103、109、112、113"/>
+    
+    <style>body:before{ content: ''; background-image: url(https://api.paugram.com/wallpaper?source=gh) }</style>
+    
+<meta name="generator" content="Hexo 6.1.0"><link rel="alternate" href="/atom.xml" title="Twacの自习室" type="application/atom+xml">
+</head>
+
+  <body>
+    <header>
+    <div class="head-title">
+        <h4>Twacの自习室</h4>
+    </div>
+    <div class="head-action">
+        <div class="toggle-btn"></div>
+        <div class="light-btn"></div>
+        <div class="search-btn"></div>
+    </div>
+    <form class="head-search" method="post">
+        <input type="text" name="s" placeholder="搜索什么？">
+    </form>
+    <nav class="head-menu">
+        <a href="/">首页</a>
+        <div class="has-child">
+            <a>分类</a>
+            <div class="sub-menu">
+                <a class="category-link" href="/LeetCode/">LeetCode</a><a class="category-link" href="/backenddev/">后端学习</a><a class="category-link" href="/randomtoss/">瞎折腾</a><a class="category-link" href="/lanqiao/">蓝桥杯</a>
+            </div>
+        </div>
+        
+            <a href="/about">关于我</a>
+        
+            <a href="/friends">朋友们</a>
+        
+            <a href="/atom.xml">RSS订阅</a>
+        
+    </nav>
+</header>
+
+    <main>
+    <div class="wrap min">
+        <section class="post-title">
+            <h2>每日一刷 791、99、103、109、112、113</h2>
+            <div class="post-meta">
+                <time class="date">2022.11.13</time>
+            
+                <span class="category"><a class="category-link" href="/LeetCode/">LeetCode</a></span>
+            
+            </div>
+        </section>
+        <article class="post-content">
+        
+            <h2 id="791-自定义字符串排序"><a href="#791-自定义字符串排序" class="headerlink" title="791.自定义字符串排序"></a>791.自定义字符串排序</h2><blockquote>
+<p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/custom-sort-string">https://leetcode.cn/problems/custom-sort-string</a></p>
+</blockquote>
+<p><strong>思路:</strong><br>用数组记录每个字符的位置，遍历<code>s</code>, 按照<code>order</code>的顺序自定义排序交换元素, 如果<code>s</code>里有<code>order</code>没有的元素默认位置置为0</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">customSortString</span><span class="params">(order <span class="type">string</span>, s <span class="type">string</span>)</span></span> <span class="type">string</span> &#123;</span><br><span class="line">    dict := [<span class="number">26</span>]<span class="type">int</span>&#123;&#125;</span><br><span class="line">    <span class="keyword">for</span> i := <span class="keyword">range</span> order &#123;</span><br><span class="line">        dict[order[i]-<span class="string">&#x27;a&#x27;</span>] = i</span><br><span class="line">    &#125;</span><br><span class="line">    cs := []<span class="type">byte</span>(s)</span><br><span class="line">    sort.Slice(cs, <span class="function"><span class="keyword">func</span><span class="params">(i, j <span class="type">int</span>)</span></span> <span class="type">bool</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> dict[cs[i]-<span class="string">&#x27;a&#x27;</span>] &lt; dict[cs[j]-<span class="string">&#x27;a&#x27;</span>]</span><br><span class="line">    &#125;)</span><br><span class="line">    <span class="keyword">return</span> <span class="type">string</span>(cs)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="99-恢复二叉搜索树"><a href="#99-恢复二叉搜索树" class="headerlink" title="99.恢复二叉搜索树"></a>99.恢复二叉搜索树</h2><blockquote>
+<p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/recover-binary-search-tree">https://leetcode.cn/problems/recover-binary-search-tree</a></p>
+</blockquote>
+<p><strong>思路:</strong><br>BST的特质, 中序遍历顺序是一个升序排序, 根据题意<code>恰好</code>两个节点的值被错误的交换, 可以在中序遍历中找到这两个节点然后交换</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for a binary tree node.</span></span><br><span class="line"><span class="comment"> * type TreeNode struct &#123;</span></span><br><span class="line"><span class="comment"> *     Val int</span></span><br><span class="line"><span class="comment"> *     Left *TreeNode</span></span><br><span class="line"><span class="comment"> *     Right *TreeNode</span></span><br><span class="line"><span class="comment"> * &#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">var</span> n1, n2 *TreeNode</span><br><span class="line"><span class="keyword">var</span> prev *TreeNode</span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">recoverTree</span><span class="params">(root *TreeNode)</span></span>  &#123;</span><br><span class="line">    n1, n2 = <span class="literal">nil</span>, <span class="literal">nil</span></span><br><span class="line">    prev = &amp;TreeNode&#123;Val: math.MinInt&#125;</span><br><span class="line">    inorderTraverse(root)</span><br><span class="line">    n1.Val, n2.Val = n2.Val, n1.Val</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">inorderTraverse</span><span class="params">(root *TreeNode)</span></span> &#123;</span><br><span class="line">    <span class="keyword">if</span> root == <span class="literal">nil</span> &#123;</span><br><span class="line">        <span class="keyword">return</span></span><br><span class="line">    &#125;</span><br><span class="line">    inorderTraverse(root.Left)</span><br><span class="line">    <span class="keyword">if</span> root.Val &lt; prev.Val &#123;</span><br><span class="line">        <span class="keyword">if</span> n1 == <span class="literal">nil</span> &#123;</span><br><span class="line">            n1 = prev</span><br><span class="line">        &#125;</span><br><span class="line">        n2 = root</span><br><span class="line">    &#125;</span><br><span class="line">    prev = root</span><br><span class="line">    inorderTraverse(root.Right)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="103-二叉树的锯齿形层序遍历"><a href="#103-二叉树的锯齿形层序遍历" class="headerlink" title="103.二叉树的锯齿形层序遍历"></a>103.二叉树的锯齿形层序遍历</h2><blockquote>
+<p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/binary-tree-zigzag-level-order-traversal">https://leetcode.cn/problems/binary-tree-zigzag-level-order-traversal</a></p>
+</blockquote>
+<p><strong>思路:</strong><br>本质是一个层序遍历框架, 只不过在此基础上加了一个<code>锯齿形层序遍历</code>, 设置一个<code>flag</code>控制打印方向</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for a binary tree node.</span></span><br><span class="line"><span class="comment"> * public class TreeNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     TreeNode left;</span></span><br><span class="line"><span class="comment"> *     TreeNode right;</span></span><br><span class="line"><span class="comment"> *     TreeNode() &#123;&#125;</span></span><br><span class="line"><span class="comment"> *     TreeNode(int val) &#123; this.val = val; &#125;</span></span><br><span class="line"><span class="comment"> *     TreeNode(int val, TreeNode left, TreeNode right) &#123;</span></span><br><span class="line"><span class="comment"> *         this.val = val;</span></span><br><span class="line"><span class="comment"> *         this.left = left;</span></span><br><span class="line"><span class="comment"> *         this.right = right;</span></span><br><span class="line"><span class="comment"> *     &#125;</span></span><br><span class="line"><span class="comment"> * &#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> List&lt;List&lt;Integer&gt;&gt; <span class="title function_">zigzagLevelOrder</span><span class="params">(TreeNode root)</span> &#123;</span><br><span class="line">        LinkedList&lt;List&lt;Integer&gt;&gt; res = <span class="keyword">new</span> <span class="title class_">LinkedList</span>&lt;&gt;();</span><br><span class="line">        <span class="keyword">if</span> (root == <span class="literal">null</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> res;</span><br><span class="line">        &#125;</span><br><span class="line">        Queue&lt;TreeNode&gt; queue = <span class="keyword">new</span> <span class="title class_">LinkedList</span>&lt;&gt;();</span><br><span class="line">        queue.offer(root);</span><br><span class="line">        <span class="type">boolean</span> <span class="variable">leftOrRight</span> <span class="operator">=</span> <span class="literal">true</span>;</span><br><span class="line">        <span class="keyword">while</span> (!queue.isEmpty()) &#123;</span><br><span class="line">            <span class="type">int</span> <span class="variable">size</span> <span class="operator">=</span> queue.size();</span><br><span class="line">            LinkedList&lt;Integer&gt; level = <span class="keyword">new</span> <span class="title class_">LinkedList</span>&lt;&gt;();</span><br><span class="line">            <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; size; i++) &#123;</span><br><span class="line">                <span class="type">TreeNode</span> <span class="variable">cur</span> <span class="operator">=</span> queue.poll();</span><br><span class="line">                <span class="keyword">if</span> (leftOrRight) &#123;</span><br><span class="line">                    level.addLast(cur.val);</span><br><span class="line">                &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                    level.addFirst(cur.val);</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">if</span> (cur.left != <span class="literal">null</span>) &#123;</span><br><span class="line">                    queue.offer(cur.left);</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">if</span> (cur.right != <span class="literal">null</span>) &#123;</span><br><span class="line">                    queue.offer(cur.right);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            leftOrRight = !leftOrRight;</span><br><span class="line">            res.add(level);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="109-有序链表转换二叉搜索树"><a href="#109-有序链表转换二叉搜索树" class="headerlink" title="109.有序链表转换二叉搜索树"></a>109.有序链表转换二叉搜索树</h2><blockquote>
+<p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/convert-sorted-list-to-binary-search-tree">https://leetcode.cn/problems/convert-sorted-list-to-binary-search-tree</a></p>
+</blockquote>
+<p><strong>思路:</strong><br>这道题有很多种做法, 最先想到的还是先把链表转换成数组在去构建BST, 也可以先找到链表的中点再去构造BST</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for singly-linked list.</span></span><br><span class="line"><span class="comment"> * type ListNode struct &#123;</span></span><br><span class="line"><span class="comment"> *     Val int</span></span><br><span class="line"><span class="comment"> *     Next *ListNode</span></span><br><span class="line"><span class="comment"> * &#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for a binary tree node.</span></span><br><span class="line"><span class="comment"> * type TreeNode struct &#123;</span></span><br><span class="line"><span class="comment"> *     Val int</span></span><br><span class="line"><span class="comment"> *     Left *TreeNode</span></span><br><span class="line"><span class="comment"> *     Right *TreeNode</span></span><br><span class="line"><span class="comment"> * &#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">sortedListToBST</span><span class="params">(head *ListNode)</span></span> *TreeNode &#123;</span><br><span class="line">    nodes := []<span class="type">int</span>&#123;&#125;</span><br><span class="line">    <span class="keyword">for</span> p := head; p != <span class="literal">nil</span>; p = p.Next &#123;</span><br><span class="line">        nodes = <span class="built_in">append</span>(nodes, p.Val)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> build(nodes, <span class="number">0</span>, <span class="built_in">len</span>(nodes)<span class="number">-1</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">build</span><span class="params">(nums []<span class="type">int</span>, start, end <span class="type">int</span>)</span></span> *TreeNode &#123;</span><br><span class="line">    <span class="keyword">if</span> start &gt; end &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">nil</span></span><br><span class="line">    &#125;</span><br><span class="line">    mid := start + (end - start) / <span class="number">2</span></span><br><span class="line">    <span class="keyword">return</span> &amp;TreeNode&#123;</span><br><span class="line">        Val: nums[mid],</span><br><span class="line">        Left: build(nums, start, mid<span class="number">-1</span>),</span><br><span class="line">        Right: build(nums, mid+<span class="number">1</span>, end),</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="112-路径总和"><a href="#112-路径总和" class="headerlink" title="112.路径总和"></a>112.路径总和</h2><blockquote>
+<p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/path-sum">https://leetcode.cn/problems/path-sum</a></p>
+</blockquote>
+<p><strong>思路:</strong><br>二叉树前序遍历, 维护进出节点的缓存值, 当节点是叶子节点时且缓存值等于目标值返回true, 反则false</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for a binary tree node.</span></span><br><span class="line"><span class="comment"> * type TreeNode struct &#123;</span></span><br><span class="line"><span class="comment"> *     Val int</span></span><br><span class="line"><span class="comment"> *     Left *TreeNode</span></span><br><span class="line"><span class="comment"> *     Right *TreeNode</span></span><br><span class="line"><span class="comment"> * &#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">var</span> found <span class="type">bool</span></span><br><span class="line"><span class="keyword">var</span> sum, target <span class="type">int</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">hasPathSum</span><span class="params">(root *TreeNode, targetSum <span class="type">int</span>)</span></span> <span class="type">bool</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> root == <span class="literal">nil</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">    &#125;</span><br><span class="line">    sum = <span class="number">0</span></span><br><span class="line">    found = <span class="literal">false</span></span><br><span class="line">    target = targetSum</span><br><span class="line">    traverse(root)</span><br><span class="line">    <span class="keyword">return</span> found</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">traverse</span><span class="params">(root *TreeNode)</span></span> &#123;</span><br><span class="line">    <span class="keyword">if</span> root == <span class="literal">nil</span> &#123;</span><br><span class="line">        <span class="keyword">return</span></span><br><span class="line">    &#125;</span><br><span class="line">    sum += root.Val</span><br><span class="line">    <span class="keyword">if</span> root.Left == <span class="literal">nil</span> &amp;&amp; root.Right == <span class="literal">nil</span> &amp;&amp; sum == target &#123;</span><br><span class="line">        found = <span class="literal">true</span></span><br><span class="line">    &#125;</span><br><span class="line">    traverse(root.Left)</span><br><span class="line">    traverse(root.Right)</span><br><span class="line">    sum -= root.Val</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="113-路径总和Ⅱ"><a href="#113-路径总和Ⅱ" class="headerlink" title="113.路径总和Ⅱ"></a>113.路径总和Ⅱ</h2><blockquote>
+<p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/path-sum-ii">https://leetcode.cn/problems/path-sum-ii</a></p>
+</blockquote>
+<p><strong>思路:</strong><br>和112相似，只不过需要记录多条路径, 仍然是前序遍历, 符合条件就记录起来。</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for a binary tree node.</span></span><br><span class="line"><span class="comment"> * type TreeNode struct &#123;</span></span><br><span class="line"><span class="comment"> *     Val int</span></span><br><span class="line"><span class="comment"> *     Left *TreeNode</span></span><br><span class="line"><span class="comment"> *     Right *TreeNode</span></span><br><span class="line"><span class="comment"> * &#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">var</span> sum <span class="type">int</span></span><br><span class="line"><span class="keyword">var</span> res [][]<span class="type">int</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">pathSum</span><span class="params">(root *TreeNode, targetSum <span class="type">int</span>)</span></span> [][]<span class="type">int</span> &#123;</span><br><span class="line">    res = [][]<span class="type">int</span>&#123;&#125;</span><br><span class="line">    sum = <span class="number">0</span></span><br><span class="line">    <span class="keyword">if</span> root == <span class="literal">nil</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> res</span><br><span class="line">    &#125;</span><br><span class="line">    traverse(root, targetSum, []<span class="type">int</span>&#123;&#125;)</span><br><span class="line">    <span class="keyword">return</span> res</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">traverse</span><span class="params">(root *TreeNode, targetSum <span class="type">int</span>, path []<span class="type">int</span>)</span></span> &#123;</span><br><span class="line">    <span class="keyword">if</span> root == <span class="literal">nil</span> &#123;</span><br><span class="line">        <span class="keyword">return</span></span><br><span class="line">    &#125;</span><br><span class="line">    remain := targetSum - root.Val</span><br><span class="line">    <span class="keyword">if</span> root.Left == <span class="literal">nil</span> &amp;&amp; root.Right == <span class="literal">nil</span> &amp;&amp; remain == <span class="number">0</span> &#123;</span><br><span class="line">        path = <span class="built_in">append</span>(path, root.Val)</span><br><span class="line">        temp := <span class="built_in">make</span>([]<span class="type">int</span>, <span class="built_in">len</span>(path))</span><br><span class="line">        <span class="built_in">copy</span>(temp, path)</span><br><span class="line">        res = <span class="built_in">append</span>(res, temp)</span><br><span class="line">        <span class="keyword">return</span></span><br><span class="line">    &#125;</span><br><span class="line">    path = <span class="built_in">append</span>(path, root.Val)</span><br><span class="line">    traverse(root.Left, remain, path)</span><br><span class="line">    traverse(root.Right, remain, path)</span><br><span class="line">    path = path[:<span class="built_in">len</span>(path)<span class="number">-1</span>]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这里有个Golang的切片小陷阱, Golang的切片是指向底层数组的, 所以直接记录切片到<code>res</code>的话只是记录<code>path</code>的地址段, 当不发生扩容指向的是原地址，一旦发生扩容创建新的底层数组指向过去，地址是会动态改变的，所以要记录<code>path</code>的副本, 每次存<code>path</code>的副本保证数据的独立性</p>
+
+        </article>
+        <section class="post-near">
+            <ul>
+                
+                    <li>上一篇: 看完啦 (つд⊂)</li>
+                
+                
+                    <li>下一篇: <a href="/LeetCode/leetcode/2022-11-12/">每日一刷 108、46、322</a></li>
+                
+            </ul>
+        </section>
+        
+            <section class="post-tags">
+            <a class="-none-link" href="/tags/algorithm/" rel="tag">算法</a>
+            </section>
+        
+    
+        <section class="post-author">
+        
+            <figure class="author-avatar">
+                <img src="/img/团子.jpg" alt="Twac" />
+            </figure>
+        
+            <div class="author-info">
+                <h4>Twac</h4>
+                <p>CL厨丨编程爱好者丨日语N2萌新 | 前后端都会一点点的菜鸟。</p>
+            </div>
+        </section>
+    
+    </div>
+</main>
+
+    <footer>
+    <div class="buttons">
+        <a class="to-top" href="#"></a>
+    </div>
+    <div class="wrap min">
+        <section class="widget">
+            <div class="row">
+                <div class="col-m-4">
+                    <h3 class="title-recent">最新文章：</h3>
+                    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/LeetCode/leetcode/2022-11-13/">每日一刷 791、99、103、109、112、113</a></li><li class="post-list-item"><a class="post-list-link" href="/LeetCode/leetcode/2022-11-12/">每日一刷 108、46、322</a></li><li class="post-list-item"><a class="post-list-link" href="/LeetCode/leetcode/2022-11-11/">每日一刷 300、354、51、53</a></li><li class="post-list-item"><a class="post-list-link" href="/uncategorized/XArrRss-Sonarr-Jackett-qBittorrent-Emby%E8%87%AA%E5%8A%A8%E8%BF%BD%E7%95%AA%E6%96%B9%E6%A1%88/">Sonarr+Jackett+qBittorrent+Emby自动追番方案</a></li><li class="post-list-item"><a class="post-list-link" href="/randomtoss/%E7%BB%99KVM%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%8A%A0%E5%8F%8C%E7%BF%85%E8%86%80/">给KVM虚拟机加双翅膀-直通独立显卡</a></li><li class="post-list-item"><a class="post-list-link" href="/lanqiao/%E7%AC%AC%E5%8D%81%E4%B8%89%E5%B1%8A%E8%93%9D%E6%A1%A5%E6%9D%AF%E5%A4%8D%E7%9B%98/">第十三届蓝桥杯复盘</a></li></ul>
+                </div>
+                <div class="col-m-4">
+                    <h3 class="title-date">时光机：</h3>
+                    <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/11/">November 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/07/">July 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/06/">June 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/06/">June 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">March 2021</a></li></ul>
+                </div>
+                <div class="col-m-4">
+                    <h3 class="title-tags">标签云：</h3>
+                    <a href="/tags/KVM/" style="font-size: 10px;">KVM</a> <a href="/tags/Linux/" style="font-size: 15px;">Linux</a> <a href="/tags/%E6%97%A5%E8%AF%AD%E5%AD%A6%E4%B9%A0/" style="font-size: 10px;">日语学习</a> <a href="/tags/%E7%9E%8E%E6%8A%98%E8%85%BE/" style="font-size: 10px;">瞎折腾</a> <a href="/tags/algorithm/" style="font-size: 20px;">算法</a>
+                </div>
+            </div>
+        </section>
+        <section class="sub-footer">
+            <p>© 2022 <a href="/">Twacの自习室</a>. All Rights Reserved. Theme By <a href="https://github.com/Dreamer-Paul/Hingle" target="_blank" rel="nofollow">Hingle</a>.</p>
+        </section>
+    </div>
+</footer>
+
+
+<script src="/static/kico.js"></script>
+<script src="/static/hingle.js"></script>
+
+
+<script>var hingle = new Paul_Hingle({"copyright":false,"night":false});</script>
+
+  </body>
+</html>
