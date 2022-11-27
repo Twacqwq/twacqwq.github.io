@@ -1,0 +1,60 @@
+<!DOCTYPE html><html lang="zh-Hans"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta name="description" content="我所喜欢的Unix哲学"><meta name="keywords" content="瞎折腾"><meta name="author" content="Twac"><meta name="copyright" content="Twac"><title>我所喜欢的Unix哲学 | Twacの自习室</title><link rel="shortcut icon" href="/melody-favicon.ico"><link rel="stylesheet" href="/css/index.css?version=1.9.1"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@latest/css/font-awesome.min.css?version=1.9.1"><meta name="format-detection" content="telephone=no"><meta http-equiv="x-dns-prefetch-control" content="on"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/gitalk/dist/gitalk.min.css"><script src="https://cdn.jsdelivr.net/npm/gitalk@latest/dist/gitalk.min.js"></script><script src="https://cdn.jsdelivr.net/npm/blueimp-md5@2.10.0/js/md5.min.js"></script><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><script>var GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  hexoVersion: '6.1.0'
+} </script><meta name="generator" content="Hexo 6.1.0"><link rel="alternate" href="/atom.xml" title="Twacの自习室" type="application/atom+xml">
+</head><body><i class="fa fa-arrow-right" id="toggle-sidebar" aria-hidden="true"></i><div id="sidebar" data-display="true"><div class="toggle-sidebar-info text-center"><span data-toggle="切换文章详情">切换站点概览</span><hr></div><div class="sidebar-toc"><div class="sidebar-toc__title">目录</div><div class="sidebar-toc__progress"><span class="progress-notice">你已经读了</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc__progress-bar"></div></div><div class="sidebar-toc__content"></div></div><div class="author-info hide"><div class="author-info__avatar text-center"><img src="/img/avatar.png"></div><div class="author-info__name text-center">Twac</div><div class="author-info__description text-center">雪中智代雨中杏，樱下小渚花田汐</div><div class="follow-button"><a target="_blank" rel="noopener" href="https://github.com/Twacqwq">关注我</a></div><hr><div class="author-info-articles"><a class="author-info-articles__archives article-meta" href="/archives"><span class="pull-left">文章</span><span class="pull-right">12</span></a><a class="author-info-articles__tags article-meta" href="/tags"><span class="pull-left">标签</span><span class="pull-right">5</span></a><a class="author-info-articles__categories article-meta" href="/"><span class="pull-left">分类</span><span class="pull-right">4</span></a></div><hr><div class="author-info-links"><div class="author-info-links__title text-center">Links</div><a class="author-info-links__name text-center" target="_blank" rel="noopener" href="https://blog.farmer233.top">FarmerChillax</a><a class="author-info-links__name text-center" target="_blank" rel="noopener" href="https://blog.feldan.top">Feldan</a><a class="author-info-links__name text-center" target="_blank" rel="noopener" href="https://blog.xiaotao233.top">XiaoTao</a></div></div></div><div id="content-outer"><div id="top-container" style="background-image: url(/img/yuru.jpg)"><div id="page-header"><span class="pull-left"> <a id="site-name" href="/">Twacの自习室</a></span><i class="fa fa-bars toggle-menu pull-right" aria-hidden="true"></i><span class="pull-right menus">   <a class="site-page" href="/">首页</a><a class="site-page" href="/categories">分类</a><a class="site-page" href="/archives">归档</a><a class="site-page" href="/about">关于我</a></span><span class="pull-right"></span></div><div id="post-info"><div id="post-title">我所喜欢的Unix哲学</div><div id="post-meta"><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 2021-11-24</time><div class="post-meta-wordcount"><span>字数总计: </span><span class="word-count">1.3k</span><span class="post-meta__separator">|</span><span>阅读时长: 3 分钟</span></div></div></div></div><div class="layout" id="content-inner"><article id="post"><div class="article-container" id="post-content"><blockquote>
+<p>摘录我所喜欢的Unix哲学, 保持简单</p>
+</blockquote>
+<p>Unix 哲学起源于 Ken Thompson 早期关于如果设计一个服务接口简洁、小巧精干的操作系统的思考，随着 Unix 文化在学习如何尽可能发掘 Thompon 设计思想的过程中不断成长，同时一路上还从其它许多地方博采众长。</p>
+<p>Unix 设哲学说来不算是一种正规设计方法。它不打算从计算机科学的理论高度来产生理论上完美的软件。那些毫无动力、松松跨跨而且薪水微薄的程序员们，能在短短期限内，如果神灵附体般造出稳定而新颖的软件-–—这只不过是经理人永远的梦呓罢了。</p>
+<p>Unix 哲学（同其它工程领域的民间传统一样）是自下而上的，而不是自上而下的。Unix 哲学注重实效，立足于丰富的经验。你不会在正规方法学和标准中找到它，它更接近于隐性的半本能的知识，即 Unix 文化所传播的专业经验。它鼓励那种分清轻重缓急的感觉，以及怀疑一切的态度，并鼓励你以幽默达观的态度对待这些。</p>
+<hr>
+<p>Unix 管道的发明人、Unix 传统的奠基人之一 Doug Mcllroy 曾经说过：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">1. 让每个程序就做好一件事。如果有新任务，就重新开始，不要往原程序中加入新功能而搞得复杂。</span><br><span class="line">2. 假定每个程序的输出都会成为另一个程序的输入，哪怕那个程序还是未知的。输出中不要有无关的信息干扰。避免使用严格的分栏格式和二进制格式输入。不要坚持使用交互式输入。</span><br><span class="line">3. 尽可能早地将设计和编译的软件投入试用，哪怕是操作系统也不例外，理想情况下，应该是在几个星期内。对拙劣的代码别犹豫，扔掉重写。</span><br><span class="line">4. 优先使用工具而不是拙劣的帮助来减轻编程任务的负担。工欲善其事，必先利其器。</span><br></pre></td></tr></table></figure>
+
+<p>Rob Pike， 最伟大的 C 语言大师之一，在《Notes on C Programming》中从另一个稍微不同的角度表述了 Unix 的哲学：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">原则1 ：你无法断定程序会在什么地方耗费运行时间。瓶颈经常出现在想不到的地方。所以别急于胡乱找个地方写代码，除非你已经证实那儿就是瓶颈所在。</span><br><span class="line"></span><br><span class="line">原则2 ：估量。在你没对代码进行估量，特别是没找到最耗时的那部分之前，别去优化速度。</span><br><span class="line"></span><br><span class="line">原则3 ：花哨的算法在n很小时通常很慢，而n通常很小。花哨算法的常数复杂度很大。除非你确定n总是很大，否则不要去用花哨算法（即使n很大，也优先考虑原则2）。</span><br><span class="line"></span><br><span class="line">原则4 ：花哨的算法比简单算法更容易出bug、更难实现。尽量使用简单的算法配合简单的数据结构。</span><br><span class="line"></span><br><span class="line">原则5 ：数据压倒一切。如果已经选择了正确的数据结构并且把一切都组织的井井有条，正确的算法也就不言自明。编程的核心是数据结构，而不是算法。</span><br><span class="line"></span><br><span class="line">原则6 ：没有原则6。</span><br></pre></td></tr></table></figure>
+
+<hr>
+<p>Unix 哲学中更多的内容不这些先哲们口头表述出来的，而是由他们所作的一切和 Unix 本身所作出的榜样体现出来的。从整体上来说，可以概括为以下几点：</p>
+<ol>
+<li>模块原则：使用简单的接口拼接简单的部件。</li>
+<li>清晰原则：清晰胜于机巧。</li>
+<li>组合原则：设计时考虑拼接组合。</li>
+<li>分离原则：策略同机制分离，接口同引擎分离。</li>
+<li>简洁原则：设计要简洁，复杂度能低则低。</li>
+<li>吝啬原则：除非确无它法，不要编写庞大的程序。</li>
+<li>透明性原则：设计要可见，以便审查和调试。</li>
+<li>健壮原则：健壮源于透明与简洁。</li>
+<li>表示原则：把知识叠入数据以求逻辑质朴而健壮。</li>
+<li>通俗原则：接口设计避免标新立异。</li>
+<li>缄默原则：如果一个程序没什么好说的，就沉默。</li>
+<li>补救原则：出现异常时，马上退出并给出足够错误信息。</li>
+<li>经济原则：宁花机器一分，不花程序员一秒。</li>
+<li>生成原则：避免手工 hack，尽量编写程序去生成程序。</li>
+<li>优化原则：雕琢前先要有原型，跑之前先学会走。</li>
+<li>多样原则：决不相信所谓“不二法门”的断言。</li>
+<li>扩展原则：设计着眼未来，未来总比预想来得快。</li>
+</ol>
+<p>总之，如果要让所有的 Unix 哲学浓缩为一条铁律，那就是各地编程大师奉为圭皋的“KISS”原则： <strong>Keep It Simple, Stupid!</strong></p>
+</div></article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">Twac</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://blog.xiaohao233.top/uncategorized/我喜欢的Unix哲学/">https://blog.xiaohao233.top/uncategorized/我喜欢的Unix哲学/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://blog.xiaohao233.top">Twacの自习室</a>！</span></div></div><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E7%9E%8E%E6%8A%98%E8%85%BE/">瞎折腾</a></div><nav id="pagination"><div class="prev-post pull-left"><a href="/lanqiao/%E7%AC%AC%E5%8D%81%E4%B8%89%E5%B1%8A%E8%93%9D%E6%A1%A5%E6%9D%AF%E5%A4%8D%E7%9B%98/"><i class="fa fa-chevron-left">  </i><span>第十三届蓝桥杯复盘</span></a></div><div class="next-post pull-right"><a href="/backenddev/Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/"><span>Linux常用命令</span><i class="fa fa-chevron-right"></i></a></div></nav><div id="gitalk-container"></div><script>var gitalk = new Gitalk({
+  clientID: '0f16ca6eec6d6df199ab',
+  clientSecret: '01f9bedf115b9484d102fae90d3e90123e36f2ce',
+  repo: 'twacqwq.github.io',
+  owner: 'Twacqwq',
+  admin: 'Twacqwq',
+  id: md5(decodeURI(location.pathname)),
+  language: 'zh-CN'
+})
+gitalk.render('gitalk-container')</script></div></div><footer class="footer-bg" style="background-image: url(/img/yuru.jpg)"><div class="layout" id="footer"><div class="copyright">&copy;2019 - 2022 By Twac</div><div class="framework-info"><span>驱动 - </span><a target="_blank" rel="noopener" href="http://hexo.io"><span>Hexo</span></a><span class="footer-separator">|</span><span>主题 - </span><a target="_blank" rel="noopener" href="https://github.com/Molunerfinn/hexo-theme-melody"><span>Melody</span></a></div></div></footer><i class="fa fa-arrow-up" id="go-up" aria-hidden="true"></i><script src="https://cdn.jsdelivr.net/npm/animejs@latest/lib/anime.min.js"></script><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@latest/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-ui-pack@latest/velocity.ui.min.js"></script><script src="/js/utils.js?version=1.9.1"></script><script src="/js/fancybox.js?version=1.9.1"></script><script src="/js/sidebar.js?version=1.9.1"></script><script src="/js/copy.js?version=1.9.1"></script><script src="/js/fireworks.js?version=1.9.1"></script><script src="/js/transition.js?version=1.9.1"></script><script src="/js/scroll.js?version=1.9.1"></script><script src="/js/head.js?version=1.9.1"></script><script>if(/Android|webOS|iPhone|iPod|iPad|BlackBerry/i.test(navigator.userAgent)) {
+  $('#nav').addClass('is-mobile')
+  $('footer').addClass('is-mobile')
+  $('#top-container').addClass('is-mobile')
+}</script><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","model":{"jsonPath":"/live2dw/assets/hijiki.model.json"},"display":{"superSample":2,"width":210,"height":420,"position":"right","hOffset":0,"vOffset":-20},"log":false,"tagMode":false});</script></body></html>
