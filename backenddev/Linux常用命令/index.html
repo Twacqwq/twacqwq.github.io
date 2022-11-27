@@ -1,74 +1,15 @@
-<!DOCTYPE html>
-<html>
-  <head>
-     
-    <meta charset="UTF-8">
-    <title>Linux常用命令 - Twacの自习室</title>
-    <link rel="shortcut icon" href="/static/img/%E5%9B%A2%E5%AD%90.png">
-    <link rel="icon" href="/static/img/团子.jpg" sizes="192x192"/>
-    
-<link rel="stylesheet" href="/static/kico.css">
-<link rel="stylesheet" href="/static/hingle.css">
-
-    
-<link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/4.7.0/css/font-awesome.css">
-
-    <meta name="viewport" content="width=device-width, maximum-scale=1, initial-scale=1"/>
-    <meta property="og:site_name" content="Twacの自习室">
-    <meta property="og:title" content="Linux常用命令"/>
-    
-    <style>body:before{ content: ''; background-image: url(https://api.paugram.com/wallpaper?source=gh) }</style>
-    
-<meta name="generator" content="Hexo 6.1.0"><link rel="alternate" href="/atom.xml" title="Twacの自习室" type="application/atom+xml">
-</head>
-
-  <body>
-    <header>
-    <div class="head-title">
-        <h4>Twacの自习室</h4>
-    </div>
-    <div class="head-action">
-        <div class="toggle-btn"></div>
-        <div class="light-btn"></div>
-        <div class="search-btn"></div>
-    </div>
-    <form class="head-search" method="post">
-        <input type="text" name="s" placeholder="搜索什么？">
-    </form>
-    <nav class="head-menu">
-        <a href="/">首页</a>
-        <div class="has-child">
-            <a>分类</a>
-            <div class="sub-menu">
-                <a class="category-link" href="/LeetCode/">LeetCode</a><a class="category-link" href="/backenddev/">后端学习</a><a class="category-link" href="/randomtoss/">瞎折腾</a><a class="category-link" href="/lanqiao/">蓝桥杯</a>
-            </div>
-        </div>
-        
-            <a href="/about">关于我</a>
-        
-            <a href="/friends">朋友们</a>
-        
-            <a href="/atom.xml">RSS订阅</a>
-        
-    </nav>
-</header>
-
-    <main>
-    <div class="wrap min">
-        <section class="post-title">
-            <h2>Linux常用命令</h2>
-            <div class="post-meta">
-                <time class="date">2021.06.29</time>
-            
-                <span class="category"><a class="category-link" href="/backenddev/">后端学习</a></span>
-            
-            </div>
-        </section>
-        <article class="post-content">
-        
-            <blockquote>这篇文章上次修改于 504 天前，可能其部分内容已经发生变化，如有疑问可询问作者。</blockquote>
-        
-            <h1 id="关机-x2F-重启-x2F-注销"><a href="#关机-x2F-重启-x2F-注销" class="headerlink" title="关机&#x2F;重启&#x2F;注销"></a>关机&#x2F;重启&#x2F;注销</h1><table>
+<!DOCTYPE html><html lang="zh-Hans"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta name="description" content="Linux常用命令"><meta name="keywords" content="Linux"><meta name="author" content="Twac"><meta name="copyright" content="Twac"><title>Linux常用命令 | Twacの自习室</title><link rel="shortcut icon" href="/melody-favicon.ico"><link rel="stylesheet" href="/css/index.css?version=1.9.1"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@latest/css/font-awesome.min.css?version=1.9.1"><meta name="format-detection" content="telephone=no"><meta http-equiv="x-dns-prefetch-control" content="on"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="stylesheet" type="text/css" href="https://twac-images.oss-cn-hangzhou.aliyuncs.com/blog/config/gitalk.min.js"><script src="https://twac-images.oss-cn-hangzhou.aliyuncs.com/blog/config/gitalk.min.js"></script><script src="https://twac-images.oss-cn-hangzhou.aliyuncs.com/blog/config/md5.min.js"></script><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><script>var GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  hexoVersion: '6.1.0'
+} </script><meta name="generator" content="Hexo 6.1.0"><link rel="alternate" href="/atom.xml" title="Twacの自习室" type="application/atom+xml">
+</head><body><i class="fa fa-arrow-right" id="toggle-sidebar" aria-hidden="true"></i><div id="sidebar" data-display="true"><div class="toggle-sidebar-info text-center"><span data-toggle="切换文章详情">切换站点概览</span><hr></div><div class="sidebar-toc"><div class="sidebar-toc__title">目录</div><div class="sidebar-toc__progress"><span class="progress-notice">你已经读了</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc__progress-bar"></div></div><div class="sidebar-toc__content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%85%B3%E6%9C%BA-x2F-%E9%87%8D%E5%90%AF-x2F-%E6%B3%A8%E9%94%80"><span class="toc-number">1.</span> <span class="toc-text">关机&#x2F;重启&#x2F;注销</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%B3%BB%E7%BB%9F%E4%BF%A1%E6%81%AF%E5%92%8C%E6%80%A7%E8%83%BD%E6%9F%A5%E7%9C%8B"><span class="toc-number">2.</span> <span class="toc-text">系统信息和性能查看</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%A3%81%E7%9B%98%E5%92%8C%E5%88%86%E5%8C%BA"><span class="toc-number">3.</span> <span class="toc-text">磁盘和分区</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%94%A8%E6%88%B7%E5%92%8C%E7%94%A8%E6%88%B7%E7%BB%84"><span class="toc-number">4.</span> <span class="toc-text">用户和用户组</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%BD%91%E7%BB%9C%E5%92%8C%E8%BF%9B%E7%A8%8B%E7%AE%A1%E7%90%86"><span class="toc-number">5.</span> <span class="toc-text">网络和进程管理</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%B8%B8%E8%A7%81%E7%B3%BB%E7%BB%9F%E6%9C%8D%E5%8A%A1%E5%91%BD%E4%BB%A4"><span class="toc-number">6.</span> <span class="toc-text">常见系统服务命令</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E5%92%8C%E7%9B%AE%E5%BD%95%E6%93%8D%E4%BD%9C"><span class="toc-number">7.</span> <span class="toc-text">文件和目录操作</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E6%9F%A5%E7%9C%8B%E5%92%8C%E5%A4%84%E7%90%86"><span class="toc-number">8.</span> <span class="toc-text">文件查看和处理</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%89%93%E5%8C%85%E5%92%8C%E8%A7%A3%E5%8E%8B"><span class="toc-number">9.</span> <span class="toc-text">打包和解压</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#RPM%E5%8C%85%E7%AE%A1%E7%90%86%E5%91%BD%E4%BB%A4"><span class="toc-number">10.</span> <span class="toc-text">RPM包管理命令</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#YUM%E5%8C%85%E7%AE%A1%E7%90%86%E5%91%BD%E4%BB%A4"><span class="toc-number">11.</span> <span class="toc-text">YUM包管理命令</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#DPKG%E5%8C%85%E7%AE%A1%E7%90%86%E5%91%BD%E4%BB%A4"><span class="toc-number">12.</span> <span class="toc-text">DPKG包管理命令</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#APT%E8%BD%AF%E4%BB%B6%E2%BC%AF%E5%85%B7"><span class="toc-number">13.</span> <span class="toc-text">APT软件⼯具</span></a></li></ol></div></div><div class="author-info hide"><div class="author-info__avatar text-center"><img src="https://twac-images.oss-cn-hangzhou.aliyuncs.com/blog/config/avatar.png"></div><div class="author-info__name text-center">Twac</div><div class="author-info__description text-center">雪中智代雨中杏，樱下小渚花田汐</div><div class="follow-button"><a target="_blank" rel="noopener" href="https://github.com/Twacqwq">关注我</a></div><hr><div class="author-info-articles"><a class="author-info-articles__archives article-meta" href="/archives"><span class="pull-left">文章</span><span class="pull-right">12</span></a><a class="author-info-articles__tags article-meta" href="/tags"><span class="pull-left">标签</span><span class="pull-right">5</span></a><a class="author-info-articles__categories article-meta" href="/"><span class="pull-left">分类</span><span class="pull-right">4</span></a></div><hr><div class="author-info-links"><div class="author-info-links__title text-center">Links</div><a class="author-info-links__name text-center" target="_blank" rel="noopener" href="https://blog.farmer233.top">FarmerChillax</a><a class="author-info-links__name text-center" target="_blank" rel="noopener" href="https://blog.feldan.top">Feldan</a><a class="author-info-links__name text-center" target="_blank" rel="noopener" href="https://blog.xiaotao233.top">XiaoTao</a></div></div></div><div id="content-outer"><div id="top-container" style="background-image: url(https://twac-images.oss-cn-hangzhou.aliyuncs.com/blog/config/yuru.jpg)"><div id="page-header"><span class="pull-left"> <a id="site-name" href="/">Twacの自习室</a></span><i class="fa fa-bars toggle-menu pull-right" aria-hidden="true"></i><span class="pull-right menus">   <a class="site-page" href="/">首页</a><a class="site-page" href="/categories">分类</a><a class="site-page" href="/archives">归档</a><a class="site-page" href="/about">关于我</a></span><span class="pull-right"></span></div><div id="post-info"><div id="post-title">Linux常用命令</div><div id="post-meta"><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 2021-06-29</time><span class="post-meta__separator">|</span><i class="fa fa-inbox post-meta__icon" aria-hidden="true"></i><a class="post-meta__categories" href="/backenddev/">后端学习</a><div class="post-meta-wordcount"><span>字数总计: </span><span class="word-count">2.9k</span><span class="post-meta__separator">|</span><span>阅读时长: 11 分钟</span></div></div></div></div><div class="layout" id="content-inner"><article id="post"><div class="article-container" id="post-content"><h1 id="关机-x2F-重启-x2F-注销"><a href="#关机-x2F-重启-x2F-注销" class="headerlink" title="关机&#x2F;重启&#x2F;注销"></a>关机&#x2F;重启&#x2F;注销</h1><table>
 <thead>
 <tr>
 <th>常用命令</th>
@@ -1144,72 +1085,17 @@
 <td>清理缓存</td>
 </tr>
 </tbody></table>
-
-        </article>
-        <section class="post-near">
-            <ul>
-                
-                    <li>上一篇: <a href="/lanqiao/%E7%AC%AC%E5%8D%81%E4%B8%89%E5%B1%8A%E8%93%9D%E6%A1%A5%E6%9D%AF%E5%A4%8D%E7%9B%98/">第十三届蓝桥杯复盘</a></li>
-                
-                
-                    <li>下一篇: <a href="/uncategorized/%E6%97%A5%E8%AF%AD%E6%A0%B8%E5%BF%83%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95%E6%A1%86%E6%9E%B6%E5%B0%8F%E8%AE%B0/">日语核心基础语法框架小记</a></li>
-                
-            </ul>
-        </section>
-        
-            <section class="post-tags">
-            <a class="-none-link" href="/tags/Linux/" rel="tag">Linux</a>
-            </section>
-        
-    
-        <section class="post-author">
-        
-            <figure class="author-avatar">
-                <img src="/img/团子.jpg" alt="Twac" />
-            </figure>
-        
-            <div class="author-info">
-                <h4>Twac</h4>
-                <p>CL厨丨编程爱好者丨日语N2萌新 | 前后端都会一点点的菜鸟。</p>
-            </div>
-        </section>
-    
-    </div>
-</main>
-
-    <footer>
-    <div class="buttons">
-        <a class="to-top" href="#"></a>
-    </div>
-    <div class="wrap min">
-        <section class="widget">
-            <div class="row">
-                <div class="col-m-4">
-                    <h3 class="title-recent">最新文章：</h3>
-                    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/LeetCode/leetcode/2022-11-14/">每日一刷 117、124、116</a></li><li class="post-list-item"><a class="post-list-link" href="/LeetCode/leetcode/2022-11-13/">每日一刷 791、99、103、109、112、113</a></li><li class="post-list-item"><a class="post-list-link" href="/LeetCode/leetcode/2022-11-12/">每日一刷 108、46、322</a></li><li class="post-list-item"><a class="post-list-link" href="/LeetCode/leetcode/2022-11-11/">每日一刷 300、354、51、53</a></li><li class="post-list-item"><a class="post-list-link" href="/uncategorized/XArrRss-Sonarr-Jackett-qBittorrent-Emby%E8%87%AA%E5%8A%A8%E8%BF%BD%E7%95%AA%E6%96%B9%E6%A1%88/">Sonarr+Jackett+qBittorrent+Emby自动追番方案</a></li><li class="post-list-item"><a class="post-list-link" href="/randomtoss/%E7%BB%99KVM%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%8A%A0%E5%8F%8C%E7%BF%85%E8%86%80/">给KVM虚拟机加双翅膀-直通独立显卡</a></li></ul>
-                </div>
-                <div class="col-m-4">
-                    <h3 class="title-date">时光机：</h3>
-                    <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/11/">November 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/07/">July 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/06/">June 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/06/">June 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">March 2021</a></li></ul>
-                </div>
-                <div class="col-m-4">
-                    <h3 class="title-tags">标签云：</h3>
-                    <a href="/tags/KVM/" style="font-size: 10px;">KVM</a> <a href="/tags/Linux/" style="font-size: 15px;">Linux</a> <a href="/tags/%E6%97%A5%E8%AF%AD%E5%AD%A6%E4%B9%A0/" style="font-size: 10px;">日语学习</a> <a href="/tags/%E7%9E%8E%E6%8A%98%E8%85%BE/" style="font-size: 10px;">瞎折腾</a> <a href="/tags/algorithm/" style="font-size: 20px;">算法</a>
-                </div>
-            </div>
-        </section>
-        <section class="sub-footer">
-            <p>© 2022 <a href="/">Twacの自习室</a>. All Rights Reserved. Theme By <a href="https://github.com/Dreamer-Paul/Hingle" target="_blank" rel="nofollow">Hingle</a>.</p>
-        </section>
-    </div>
-</footer>
-
-
-<script src="/static/kico.js"></script>
-<script src="/static/hingle.js"></script>
-
-
-<script>var hingle = new Paul_Hingle({"copyright":false,"night":false});</script>
-
-  </body>
-</html>
+</div></article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">Twac</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://blog.xiaohao233.top/backenddev/Linux常用命令/">https://blog.xiaohao233.top/backenddev/Linux常用命令/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://blog.xiaohao233.top">Twacの自习室</a>！</span></div></div><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Linux/">Linux</a></div><nav id="pagination"><div class="prev-post pull-left"><a href="/uncategorized/%E6%88%91%E5%96%9C%E6%AC%A2%E7%9A%84Unix%E5%93%B2%E5%AD%A6/"><i class="fa fa-chevron-left">  </i><span>我所喜欢的Unix哲学</span></a></div><div class="next-post pull-right"><a href="/uncategorized/%E6%97%A5%E8%AF%AD%E6%A0%B8%E5%BF%83%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95%E6%A1%86%E6%9E%B6%E5%B0%8F%E8%AE%B0/"><span>日语核心基础语法框架小记</span><i class="fa fa-chevron-right"></i></a></div></nav><div id="gitalk-container"></div><script>var gitalk = new Gitalk({
+  clientID: '0f16ca6eec6d6df199ab',
+  clientSecret: '01f9bedf115b9484d102fae90d3e90123e36f2ce',
+  repo: 'twacqwq.github.io',
+  owner: 'Twacqwq',
+  admin: 'Twacqwq',
+  id: md5(decodeURI(location.pathname)),
+  language: 'zh-CN'
+})
+gitalk.render('gitalk-container')</script></div></div><footer class="footer-bg" style="background-image: url(https://twac-images.oss-cn-hangzhou.aliyuncs.com/blog/config/yuru.jpg)"><div class="layout" id="footer"><div class="copyright">&copy;2019 - 2022 By Twac</div><div class="framework-info"><span>驱动 - </span><a target="_blank" rel="noopener" href="http://hexo.io"><span>Hexo</span></a><span class="footer-separator">|</span><span>主题 - </span><a target="_blank" rel="noopener" href="https://github.com/Molunerfinn/hexo-theme-melody"><span>Melody</span></a></div></div></footer><i class="fa fa-arrow-up" id="go-up" aria-hidden="true"></i><script src="https://cdn.jsdelivr.net/npm/animejs@latest/lib/anime.min.js"></script><script src="https://twac-images.oss-cn-hangzhou.aliyuncs.com/blog/config/jquery.min.js"></script><script src="https://twac-images.oss-cn-hangzhou.aliyuncs.com/blog/config/jquery.fancybox.min.js"></script><script src="https://twac-images.oss-cn-hangzhou.aliyuncs.com/blog/config/velocity.min.js"></script><script src="https://twac-images.oss-cn-hangzhou.aliyuncs.com/blog/config/velocity.ui.min.js"></script><script src="/js/utils.js?version=1.9.1"></script><script src="/js/fancybox.js?version=1.9.1"></script><script src="/js/sidebar.js?version=1.9.1"></script><script src="/js/copy.js?version=1.9.1"></script><script src="/js/fireworks.js?version=1.9.1"></script><script src="/js/transition.js?version=1.9.1"></script><script src="/js/scroll.js?version=1.9.1"></script><script src="/js/head.js?version=1.9.1"></script><script>if(/Android|webOS|iPhone|iPod|iPad|BlackBerry/i.test(navigator.userAgent)) {
+  $('#nav').addClass('is-mobile')
+  $('footer').addClass('is-mobile')
+  $('#top-container').addClass('is-mobile')
+}</script><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","model":{"jsonPath":"/live2dw/assets/hijiki.model.json"},"display":{"superSample":2,"width":210,"height":420,"position":"right","hOffset":0,"vOffset":-20},"log":false,"tagMode":false});</script></body></html>
